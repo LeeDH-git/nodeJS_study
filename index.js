@@ -2,7 +2,8 @@ import express from 'express'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import methodOverride from 'method-override'
-
+import path from 'path';
+const __dirname = path.resolve();
 let app = express();
 
 // DB setting
@@ -20,6 +21,7 @@ db.on('error', function (err) {
 
 // Other Setting
 app.set('view engine', 'ejs');
+
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,13 +38,6 @@ app.use(methodOverride('_method'));
 // Route
 app.use("/", require('./route/home'))
 
-// Home
-router.get('/', function(req, res){
-  res.render('home/welcome');
-});
-router.get('/about', function(req, res){
-  res.render('home/about');
-});
 
 // Port Setting
 let port = 3000;
