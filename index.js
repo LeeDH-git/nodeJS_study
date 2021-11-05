@@ -18,19 +18,14 @@ db.on("error", function (err) {
 });
 
 // Other Setting
+
+//html 템플릿 엔진 ejs 설정
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-
-// DB Schema
-// let contactSchema = mongoose.Schema({
-//     name: { type: String, required: true, unique: true },
-//     email: { type: String },
-//     phone: { type: String }
-// });
-// let contact = mongoose.model('contact', contactSchema);
 
 // Route
 app.use("/", require("./route/home"));
@@ -41,26 +36,3 @@ let port = 3000;
 app.listen(port, function () {
   console.log("server on! http:://localhost:" + port);
 });
-
-// // Home
-// app.get("/", function (req, res) {
-//     res.redirect('/contacts');
-// });
-// //contacts - index
-// app.get('/contacts', function(req, res){
-//   contact.find({}, function(err, contacts){
-//     if(err) return res.json(err);
-//     res.render('contacts/index', {contacts:contacts});
-//   });
-// });
-// // contacts - New
-// app.get('/contacts/new', function(req, res){
-//   res.render('contacts/new');
-// });
-// // contacts - create
-// app.post('/contacts', function(req, res){
-//   contact.create(req.body, function(err, contact){
-//     if(err) return res.json(err);
-//     res.redirect('/contacts');
-//   });
-// });

@@ -13,3 +13,5 @@ create : POS
 edit : GET
 update : PUT
 destroy : DELETE
+
+ejs 사용 설명 : https://junspapa-itdev.tistory.com/2
